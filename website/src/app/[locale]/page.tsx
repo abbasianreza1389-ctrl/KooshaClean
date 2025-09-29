@@ -1,45 +1,23 @@
-import Hero from "@/components/Hero";
-import Section from "@/components/Section";
-import { Lang } from "@/lib/dict";
+'use client'
+import Link from 'next/link'
+import {useTranslations} from 'next-intl'
 
-const base = process.env.NEXT_PUBLIC_API_BASE!;
-
-async function getData() {
-  const [s, p] = await Promise.all([
-    fetch(`${base}/api/public/services/`, { next: { revalidate: 60 } }).then(r=>r.json()),
-    fetch(`${base}/api/public/posts/`,    { next: { revalidate: 60 } }).then(r=>r.json())
-  ]);
-  return { services: s, posts: p };
-}
-
-export default async function Home({ params }: { params: { locale: Lang } }) {
-  const { services, posts } = await getData();
-  const lang = params.locale;
+export default function Home(){
+  const t = useTranslations('home')
+  const nav = useTranslations('nav')
   return (
-    <div className="space-y-10">
-      <Hero dict={{hero:{title:"به کوشا خوش آمدید",lead:"کلینیک هوشمند…",cta1:"رزرو نوبت",cta2:"خدمات"}}} lang={lang}/>
-      <Section title="خدمات پرمراجعه">
-        <div className="grid md:grid-cols-3 gap-6">
-          {services.map((s:any)=>(
-            <a key={s.id} href={`/${lang}/services/${s.slug}`} className="card hover:shadow-lg">
-              <h3 className="font-semibold">{s.title}</h3>
-              <p className="text-muted text-sm">{s.desc}</p>
-              <div className="text-sm mt-3 text-brand">{s.price?.toLocaleString("fa-IR")}</div>
-            </a>
-          ))}
-        </div>
-      </Section>
-      <Section title="خبرها و مقالات">
-        <div className="grid md:grid-cols-2 gap-6">
-          {posts.map((p:any)=>(
-            <a key={p.id} href={`/${lang}/news/${p.slug}`} className="card hover:shadow-lg">
-              <h3 className="font-semibold">{p.title}</h3>
-              <p className="text-muted text-sm">{p.excerpt}</p>
-              <div className="text-xs mt-3">{p.date}</div>
-            </a>
-          ))}
-        </div>
-      </Section>
-    </div>
-  );
+    <section className="space-y-6">
+      <h1 className="text-3xl font-bold">{t('title')}</h1>
+      <p className="text-slate-600">{t('subtitle')}</p>
+      <div className="grid md:grid-cols-2 gap-4">
+        <Link className="p-4 rounded-xl border" href="./book">{nav('book')}</Link>
+        <Link className="p-4 rounded-xl border" href="./portal/patient">{nav('patient')}</Link>
+        <Link className="p-4 rounded-xl border" href="./portal/reception">{nav('reception')}</Link>
+        <Link className="p-4 rounded-xl border" href="./portal/therapist">{nav('therapist')}</Link>
+        <Link className="p-4 rounded-xl border" href="./services">{nav('services')}</Link>
+        <Link className="p-4 rounded-xl border" href="./doctors">{nav('doctors')}</Link>
+        <Link className="p-4 rounded-xl border" href="./posts">{nav('posts')}</Link>
+      </div>
+    </section>
+  )
 }

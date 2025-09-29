@@ -1,20 +1,19 @@
-import "../globals.css";
-import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { t, Lang } from "@/lib/dict";
+import {NextIntlClientProvider} from 'next-intl';
+import {getMessages} from 'next-intl/server';
 
-export const metadata: Metadata = { title: "کلینیک کوشا", description: "وب‌سایت رسمی کلینیک کوشا" };
+export const dynamic = 'force-dynamic';
 
-export default function RootLayout({ children, params }: { children: React.ReactNode; params: { locale: Lang } }) {
-  const lang = params.locale;
-  const dict = t(lang);
+export default async function LocaleLayout({
+  children, params: { locale },
+}: {children: React.ReactNode; params: {locale: string}}){
+  const messages = await getMessages();
+  const dir = locale === 'fa' ? 'rtl' : 'ltr';
   return (
-    <html lang={lang} dir={lang === "en" ? "ltr" : "rtl"}>
+    <html lang={locale} dir={dir}>
       <body>
-        <Navbar lang={lang} dict={dict} />
-        <main className="container py-8">{children}</main>
-        <Footer dict={dict} />
+        <NextIntlClientProvider messages={messages}>
+          <main className="container mx-auto p-6">{children}</main>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

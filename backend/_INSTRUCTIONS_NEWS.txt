@@ -1,0 +1,7 @@
+- فایل‌های این پوشه را در مسیر `backend/news` ریپو قرار دهید.
+- سپس در `backend/koosha_api/settings.py`، اپ `news` را به `INSTALLED_APPS` اضافه کنید.
+- در `backend/koosha_api/urls.py`، خط زیر را به الگوی 'api/' اضافه کنید:
+    path('api/', include('news.urls')),
+- سپس اجرا کنید:
+    python manage.py makemigrations news
+    python manage.py migrate
