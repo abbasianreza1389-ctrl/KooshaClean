@@ -1,0 +1,6 @@
+[
+  {"model":"clinic.service","pk":1,"fields":{"slug":"consult","title":"ویزیت عمومی","desc":"معاینه و پایش سلامت","price":350000}},
+  {"model":"clinic.service","pk":2,"fields":{"slug":"physio","title":"فیزیوتراپی","desc":"توان‌بخشی و تمرین درمانی","price":4500000}},
+  {"model":"clinic.doctor","pk":1,"fields":{"name":"دکتر احمدی","role":"فیزیوتراپیست","bio":"۱۰ سال تجربه","avatar":""}},
+  {"model":"clinic.post","pk":1,"fields":{"slug":"grand-opening","title":"افتتاح کلینیک جدید","excerpt":"برنامه‌های آغازین","body":"متن کامل...","date":"2024-08-20"}}
+]

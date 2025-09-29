@@ -1,0 +1,1 @@
+Next.js + Tailwind template. Set NEXT_PUBLIC_API in .env.local then `npm i` and `npm run dev`.

@@ -1,0 +1,1 @@
+export default function Guide(){return(<main dir='rtl' className='container py-6'><h1 className='text-xl font-bold mb-4'>راهنمای مراجعه</h1><div className='card'>مسیرها، مدارک و توصیه‌ها...</div></main>);}

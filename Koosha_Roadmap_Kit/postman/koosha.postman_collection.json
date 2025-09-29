@@ -1,0 +1,58 @@
+{
+  "info": {
+    "name": "Koosha API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{api}}/api/health/"
+      },
+      "response": []
+    },
+    {
+      "name": "Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"admin\",\"password\":\"adminpass\"}"
+        },
+        "url": "{{api}}/api/token/"
+      },
+      "response": []
+    },
+    {
+      "name": "KPI Overview",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access}}"
+          }
+        ],
+        "url": "{{api}}/api/kpi/overview/"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "api",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "access",
+      "value": ""
+    }
+  ]
+}

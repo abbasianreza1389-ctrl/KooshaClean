@@ -1,0 +1,10 @@
+import Link from 'next/link'
+export default function DoctorsPage(){
+  return (
+    <section className="space-y-4">
+      <h1 className="text-2xl font-bold">پزشکان</h1>
+      <p>این صفحه به‌زودی از API پر می‌شود.</p>
+      <Link href="/" className="underline">بازگشت</Link>
+    </section>
+  )
+}

@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html[dir="rtl"] { direction: rtl; }
+body { @apply bg-slate-50 text-slate-800 antialiased; }
+.container { @apply max-w-6xl mx-auto px-4; }

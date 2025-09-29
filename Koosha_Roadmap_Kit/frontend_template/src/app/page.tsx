@@ -1,0 +1,1 @@
+'use client'; export default function Home(){return(<main dir='rtl' className='container py-6'><h1 className='text-2xl font-bold mb-4'>Koosha</h1><div className='card'>Demo</div></main>);}

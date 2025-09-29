@@ -1,0 +1,3 @@
+SpecKey,Feature,API,UI,Report,Owner,Status
+S-AV-01,Availability slots,/api/availability/slots,/booking, -,Tech,Planned
+S-BILL-01,BillingEntry on DONE,/api/appointments/{id}/complete, -,billing.csv,Accounting,Planned

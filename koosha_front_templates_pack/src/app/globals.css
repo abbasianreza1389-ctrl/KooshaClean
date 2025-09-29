@@ -1,0 +1,4 @@
+html[dir="rtl"]{direction:rtl}
+.container{max-width:72rem;margin-inline:auto;padding-inline:1rem}
+.card{border:1px solid #eee;border-radius:.75rem;background:#fff;padding:1.25rem}
+@media (prefers-color-scheme: dark){.card{background:#0b1220;color:#fff}}
