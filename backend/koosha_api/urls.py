@@ -11,4 +11,8 @@ urlpatterns = [
     path('api/', include('users.urls')),
     path('api/', include('sitecontent.urls')),
     path('healthz/', healthz),
+    ath('api/', include('portal.urls')),
+    patph('api/', include('news.urls')),
+
 ]
+

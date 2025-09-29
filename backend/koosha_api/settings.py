@@ -14,7 +14,12 @@ INSTALLED_APPS = [
     'rest_framework', 'drf_spectacular',
     'corsheaders',
     'users', 'sitecontent', 'common',
+    'news',           # ← اپ اخبار
+    'drf_spectacular',# اگر از قبل هست، دست نزن
+    # ...
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

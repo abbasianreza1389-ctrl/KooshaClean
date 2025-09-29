@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import { useEffect, useState } from 'react';
 const API = process.env.NEXT_PUBLIC_API || 'http://localhost:8000';
 export default function Page(){
