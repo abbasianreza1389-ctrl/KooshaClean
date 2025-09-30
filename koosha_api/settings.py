@@ -8,9 +8,12 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'django.contrib.admin','django.contrib.auth','django.contrib.contenttypes',
     'django.contrib.sessions','django.contrib.messages','django.contrib.staticfiles',
-    'rest_framework','corsheaders','django_filters',
-    'billing','sitecontent',
+    'rest_framework','drf_spectacular',
+    'corsheaders',
+    'users','sitecontent','common',
+    'news',   # ← این خط حتما باشد
 ]
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

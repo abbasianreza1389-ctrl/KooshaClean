@@ -1,4 +1,4 @@
-from django.contrib import admin
+﻿from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 from common.health import healthz
@@ -11,8 +11,9 @@ urlpatterns = [
     path('api/', include('users.urls')),
     path('api/', include('sitecontent.urls')),
     path('healthz/', healthz),
-    ath('api/', include('portal.urls')),
-    patph('api/', include('news.urls')),
+    path('api/', include('portal.urls')),
+    path('api/', include('news.urls')),
 
 ]
+
 

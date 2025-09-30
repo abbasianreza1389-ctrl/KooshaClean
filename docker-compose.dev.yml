@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    command: python manage.py runserver 0.0.0.0:8000
+    ports: [ "8000:8000" ]
+    volumes: [ "./backend:/app" ]
+  website:
+    build: ./website
+    command: npm run dev -- -p 3000 -H 0.0.0.0
+    ports: [ "3000:3000" ]
+    volumes: [ "./website:/app" ]

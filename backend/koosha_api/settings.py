@@ -1,4 +1,4 @@
-from pathlib import Path
+﻿from pathlib import Path
 from datetime import timedelta
 import os
 
@@ -8,14 +8,14 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'false').lower() == 'true'
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'change-me')
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS','localhost,127.0.0.1').split(',')
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [ 'catalog',
     'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
     'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles',
     'rest_framework', 'drf_spectacular',
     'corsheaders',
     'users', 'sitecontent', 'common',
-    'news',           # ← اپ اخبار
-    'drf_spectacular',# اگر از قبل هست، دست نزن
+    'news',           # â†گ ط§ظ¾ ط§ط®ط¨ط§ط±
+    'drf_spectacular',# ط§ع¯ط± ط§ط² ظ‚ط¨ظ„ ظ‡ط³طھطŒ ط¯ط³طھ ظ†ط²ظ†
     # ...
 ]
 
@@ -83,3 +83,4 @@ LOGGING = {
   },
   'root':{'handlers':['console'],'level':'INFO'},
 }
+

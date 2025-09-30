@@ -26,9 +26,17 @@ def me(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/health/', health),
-    path('api/me/', me),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/', include(router.urls)),
+
+    path('api/auth/jwt/create/',  TokenObtainPairView.as_view()),
+    path('api/auth/jwt/refresh/', TokenRefreshView.as_view()),
+    path('api/auth/jwt/verify/',  TokenVerifyView.as_view()),
+
+    path('api/', include('users.urls')),
+    path('api/', include('sitecontent.urls')),
+
+    path('healthz/', healthz),
+
+    path('api/', include('portal.urls')),
+    path('api/', include('news.urls')),   # ← اپ جدید
 ]
+
