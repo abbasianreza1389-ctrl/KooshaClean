@@ -1,0 +1,64 @@
+name: Koosha Audit (Health & Progress)
+
+on:
+  pull_request:
+  push:
+    branches: [ "**" ]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  audit:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Auditor (PowerShell)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          . ".github/tools/Koosha_Health_Progress_Auditor.ps1" -Repo "${{ github.workspace }}"
+          Write-Host "Audit finished."
+
+      - name: Upload audit artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: koosha-audit-${{ github.run_id }}
+          path: |
+            STATUS_REPORT.md
+            status_report.json
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Prepare PR comment
+        if: ${{ github.event_name == 'pull_request' }}
+        shell: pwsh
+        run: |
+          $data = Get-Content "status_report.json" -Raw | ConvertFrom-Json
+          $sum = [math]::Round([double]$data.overall_weighted, 1)
+          $lines = @(
+            "# 🩺 Koosha – Health & Progress",
+            "",
+            "**Overall Progress (weighted):** `"+$sum+"%`",
+            "",
+            "## Sections"
+          )
+          foreach($s in $data.sections){
+            $lines += ("- **{0}** — {1}% (w={2})" -f $s.name, $s.score, $s.weight)
+          }
+          $lines += @("",
+            "[Download artifacts](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          )
+          Set-Content -Path "audit_comment.md" -Value ($lines -join "`n") -Encoding utf8
+
+      - name: Comment on PR
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-file: audit_comment.md
