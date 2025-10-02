@@ -1,0 +1,8 @@
+cd Koosha_Telehealth_Providers_UI/frontend/telehealth-ui-pro
+cp .env.example .env      # آدرس API/WS را تنظیم کن
+npm install
+# اگر Provider واقعی می‌خواهی یکی از SDKهای زیر را هم نصب کن:
+# npm i twilio-video
+# npm i @100mslive/hms-video
+# npm i agora-rtc-sdk-ng
+npm run dev
