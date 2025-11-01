@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "home": "Home",
+    "book": "Book",
+    "patient": "Patient Portal",
+    "reception": "Reception Portal",
+    "therapist": "Therapist Portal",
+    "services": "Services",
+    "doctors": "Doctors",
+    "posts": "News"
+  },
+  "home": {
+    "title": "Koosha Clinic",
+    "subtitle": "Unified website & portals"
+  },
+  "book": {
+    "title": "Book an appointment",
+    "service": "Service",
+    "provider": "Provider",
+    "slot": "Slot",
+    "name": "Name",
+    "amount": "Amount (minor)",
+    "reserve": "Reserve"
+  },
+  "login": {
+    "title": "Sign in",
+    "username": "Username",
+    "password": "Password",
+    "login": "Login",
+    "ok": "Signed in"
+  },
+  "portal": {
+    "needLogin": "Please sign in to view portal data."
+  }
+}

@@ -13,3 +13,14 @@ website/.env.local
 .DS_Store
 .vscode/
 .idea/
+
+.venv/
+venv/
+ENV/
+
+.venv/
+venv/
+ENV/
+.media/
+staticfiles/
+

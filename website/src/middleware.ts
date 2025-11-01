@@ -1,6 +1,10 @@
-import createMiddleware from "next-intl/middleware";
+import createMiddleware from 'next-intl/middleware';
+
 export default createMiddleware({
-  locales: ["fa","en","ar"],
-  defaultLocale: "fa"
+  locales: ['fa', 'en'],
+  defaultLocale: 'fa'
 });
-export const config = { matcher: ["/((?!_next|.*\\..*).*)"] };
+
+export const config = {
+  matcher: ['/', '/(fa|en)/:path*']
+};
